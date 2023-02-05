@@ -5,6 +5,13 @@ import utils
 import gui_components as gui
 
 
+with open('wallets/eth_wallets.json') as f:
+    eth_wallets = json.load(f)
+
+
+for a in eth_wallets:
+    print(a)
+
 
 @utils.rate_limit(0.2)
 def get_wallet_transactions(address, save_to_file: bool, parent: str):
@@ -33,7 +40,7 @@ def get_wallet_transactions(address, save_to_file: bool, parent: str):
         transactions = data['result'][0:100]
 
         if save_to_file:
-            with open(f"{address}.json", "w") as f:
+            with open(f"{address}-transactions.json", "w") as f:
                 json.dump(transactions, f)
                 return
         
