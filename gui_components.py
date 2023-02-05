@@ -1,4 +1,4 @@
-import etherscan
+from data import etherscan
 import dearpygui.dearpygui as dpg
 import utils as util
 import dearpygui.demo as demo
@@ -6,7 +6,7 @@ import dearpygui.demo as demo
 """ This file impliments all GUI components that may appear on the main_menu. """
 
 
-def draw_transactions(transactions, parent):
+def draw_transactions(wallets, parent):
     util.clear_item_children(parent)
 
     def add_transaction(transaction):
@@ -18,8 +18,9 @@ def draw_transactions(transactions, parent):
             dpg.add_text(f"From: {transaction['from']}")
             dpg.add_text(f"To: {transaction['to']}")
     
-    for transaction in transactions:
-        add_transaction(transaction)
+    for wallet in wallets:
+        for transaction in wallet.transactions:
+            add_transaction(transaction)
 
 
 def add_menu_bar():

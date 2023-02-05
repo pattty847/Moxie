@@ -3,15 +3,11 @@ import dearpygui.dearpygui as dpg
 import requests
 import utils
 import gui_components as gui
+from data import infura
 
-
-with open('wallets/eth_wallets.json') as f:
-    eth_wallets = json.load(f)
-
-
-for a in eth_wallets:
-    print(a)
-
+def get_eth_wallets():
+    with open('wallets/eth_wallets.json') as f:
+        return json.load(f)
 
 @utils.rate_limit(0.2)
 def get_wallet_transactions(address, save_to_file: bool, parent: str):
@@ -53,7 +49,6 @@ def get_wallet_transactions(address, save_to_file: bool, parent: str):
         return None
 
 
-
 # Applies a rate limit to this function of 5/sec
 @utils.rate_limit(0.2)
 def get_eth_balance(address):
@@ -85,16 +80,4 @@ def get_eth_balance(address):
         return None
 
 
-def get_next_block():
-    endpoint = "https://api.etherscan.io/api?module=block&action=getblockcountdown&blockno=16564000"
-
-    # Make a request to the Ethereum blockchain explorer API
-    response = requests.get(endpoint)
-    
-    # Parse the JSON response data
-    data = response.json()
-    
-    return data
-
-
-print(get_next_block())
+print(infura.get_current_block(next_block=True))

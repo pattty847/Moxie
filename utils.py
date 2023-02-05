@@ -2,8 +2,12 @@ import time
 from screeninfo import get_monitors
 import dearpygui.dearpygui as dpg
 
+# Time to mine  ETH block 10-19 seconds
+ETH_BLOCK_MINE_TIME = [10, 19]
 
-def monitors():
+
+def monitors(primary= True):
+    # TODO: Check if users with one monitor have same bug as users with mutliple (Linux Fedora 37 specifically)
     monitors = [s for s in get_monitors()]
     for monitor in monitors:
         if monitor.is_primary:
