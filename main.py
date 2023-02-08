@@ -11,7 +11,7 @@ main_menu.draw_gui()
 # Primary Monitor info
 monitor, x, y, width, height = util.monitors() 
 
-# Viewport size vars
+# Viewport size varsR
 width_ = 1200
 height_ = 700
 
@@ -29,5 +29,5 @@ dpg.destroy_context()
 # ==================================== DPG & VIEWPORT SETUP ====================================
 
 
-# Random Test Bitcoin Wallet
+# Random Test Bitcoin WalletR
 # 34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo

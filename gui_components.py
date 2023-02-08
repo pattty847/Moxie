@@ -4,13 +4,20 @@ import utils as util
 import dearpygui.demo as demo
 
 """ This file impliments all GUI components that may appear on the main_menu. """
+# TODO: Add documentation for all these functions.
 
-
+# TODO: Fix this function
 def draw_transactions(wallets, parent):
+    """_summary_
+
+    Args:
+        wallets (_type_): _description_
+        parent (_type_): _description_
+    """
     util.clear_item_children(parent)
 
     def add_transaction(transaction):
-        with dpg.child_window(parent=parent, autosize_x=True, no_scrollbar=True):
+        with dpg.child_window(parent=parent, autosize_x=True, height=65, no_scrollbar=True):
             with dpg.group(horizontal=True):
                 dpg.add_text(f"Timestamp: {transaction['timeStamp']}") # convert to datetime
                 dpg.add_text(f"Block: {transaction['blockNumber']}")
@@ -18,12 +25,13 @@ def draw_transactions(wallets, parent):
             dpg.add_text(f"From: {transaction['from']}")
             dpg.add_text(f"To: {transaction['to']}")
     
-    for wallet in wallets:
-        for transaction in wallet.transactions:
-            add_transaction(transaction)
+    for transaction in wallets: # Error: wallet.transactions
+        add_transaction(transaction)
 
 
 def add_tab_menu():
+    """_summary_
+    """
     with dpg.tab_bar():
         with dpg.tab(label="ETHScan"):
             pass
@@ -31,6 +39,8 @@ def add_tab_menu():
 
 
 def add_menu_bar():
+    """_summary_
+    """
     with dpg.menu_bar():
         with dpg.menu(label="Wallets"):
             dpg.add_menu_item(label="Transactions", callback=add_wallet_window)
@@ -39,6 +49,8 @@ def add_menu_bar():
 
 
 def add_tools_menu():
+    """_summary_
+    """
     with dpg.menu(label="Tools"):
         dpg.add_menu_item(label="Demo", callback=lambda: demo.show_demo())
         dpg.add_menu_item(label="Show About", callback=lambda:dpg.show_tool(dpg.mvTool_About))
@@ -51,6 +63,8 @@ def add_tools_menu():
 
 
 def add_wallet_window():
+    """_summary_
+    """
     if not dpg.does_alias_exist("output"):
         with dpg.group(horizontal=True, parent="main-frame"):
             wallet = dpg.add_input_text(label="Address")
