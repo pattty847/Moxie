@@ -2,7 +2,7 @@ import json
 import dearpygui.dearpygui as dpg
 import requests
 import utils
-import gui_components as gui
+import gui_components as components
 from data import infura
 
 def get_eth_wallets():
@@ -47,7 +47,7 @@ def get_wallet_transactions(address, save_to_file: bool, parent: str):
                 return
         
         if parent:
-            gui.draw_transactions(transactions, parent)
+            components.draw_transactions(transactions, parent)
             return
 
         return transactions

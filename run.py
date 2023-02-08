@@ -1,12 +1,12 @@
 import dearpygui.dearpygui as dpg
 import utils as util
-import main_menu
+import gui
 
 # ==================================== DPG & VIEWPORT SETUP ====================================
 dpg.create_context()
 
 # Draw main gui
-main_menu.draw_gui()
+gui.draw_gui()
 
 # Primary Monitor info
 monitor, x, y, width, height = util.monitors() 

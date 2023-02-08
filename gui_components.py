@@ -30,8 +30,7 @@ def draw_transactions(wallets, parent):
 
 
 def add_tab_menu():
-    """_summary_
-    """
+    """ Pushes the navigation bar to the GUI """
     with dpg.tab_bar():
         with dpg.tab(label="ETHScan"):
             pass
