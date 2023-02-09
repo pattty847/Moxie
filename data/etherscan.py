@@ -16,10 +16,10 @@ def get_eth_wallets():
 
 @utils.rate_limit(0.2)
 def get_wallet_transactions(address, save_to_file: bool, parent: str):
-    """ This function retrieves the transactions of an Ethereum wallet.
+    """ This function retrieves the transactions of an Ethereum wallet using the EtherScan.io API.
 
     Args:
-        address (str): Ethereum address to search for transactions. 
+        address (str): Ethereum address that's included in request query address. 
         save_to_file (bool): A flag indicating whether the transactions should be saved to a json file.
 
     Returns:
@@ -39,7 +39,6 @@ def get_wallet_transactions(address, save_to_file: bool, parent: str):
     # Check if the response was successful
     if data['status'] == "1":
         transactions = data['result'][0:100]
-        print(transactions)
 
         if save_to_file:
             with open(f"{address}-transactions.json", "w") as f:

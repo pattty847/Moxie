@@ -2,18 +2,20 @@ import dearpygui.dearpygui as dpg
 import utils as util
 import gui
 
-# ==================================== DPG & VIEWPORT SETUP ====================================
-dpg.create_context()
-
-# Draw main gui
-gui.draw_gui()
-
+# ============================================ Vars ============================================
 # Primary Monitor info
 monitor, x, y, width, height = util.monitors() 
 
 # Viewport size varsR
 width_ = 1200
 height_ = 700
+
+# ==================================== DPG & VIEWPORT SETUP ====================================
+dpg.create_context()
+
+# Program starts here
+# Draw main gui
+gui.draw_gui()
 
 dpg.create_viewport(
     title='Custom Title', 
