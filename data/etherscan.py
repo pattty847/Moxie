@@ -30,7 +30,7 @@ def get_wallet_transactions(address, save_to_file: bool, parent: str):
     # Ethereum blockchain explorer API endpoint
     endpoint = "https://api.etherscan.io/api?module=account&action=txlist&address=" + address + "&sort=desc"
     
-    # Make a request to the Ethereum blockchain explorer API
+    # Make a request to the Ethereum blockchain explorer APIc
     response = requests.get(endpoint)
     
     # Parse the JSON response data
@@ -46,7 +46,7 @@ def get_wallet_transactions(address, save_to_file: bool, parent: str):
                 return
         
         if parent:
-            components.draw_transactions(transactions, parent)
+            components.search_eth_address(transactions, parent)
             return
 
         return transactions

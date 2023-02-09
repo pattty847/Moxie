@@ -8,7 +8,7 @@ import datetime as dt
 # TODO: Add documentation for all these functions.
 
 # TODO: Fix this function
-def draw_transactions(wallets, parent):
+def search_eth_address(transactions, parent):
     """_summary_
 
     Args:
@@ -17,25 +17,20 @@ def draw_transactions(wallets, parent):
     """
     util.clear_item_children(parent)
 
+    # Function within draw_transaction to add each transaction window to the primary viewport window
     def add_transaction(transaction):
+        # Parent will pass this child_window to the "Primary Window" tag (main viewport in gui.py)
         with dpg.child_window(parent=parent, autosize_x=True, height=85):
             with dpg.group(horizontal=True):
                 dpg.add_text(f"Timestamp: {dt.datetime.fromtimestamp(int(transaction['timeStamp']))}") # convert to datetime
                 dpg.add_text(f"Block: {transaction['blockNumber']}")
                 dpg.add_text(f"Value: {util.wei_to_eth(transaction['value'])}")
-            dpg.add_text(f"From: {transaction['from']}")
-            dpg.add_text(f"To: {transaction['to']}")
+            dpg.add_button(label=f"From: {transaction['from']}")
+            # TODO: Add callback, to search this address. It should remove children from "parent" param, and fill it with the transactions in "transactions["to"]"
+            dpg.add_button(label=f"To: {transaction['to']}")
     
-    for transaction in wallets: # Error: wallet.transactions
+    for transaction in transactions:
         add_transaction(transaction)
-
-
-def add_tab_menu():
-    """ Pushes the navigation bar to the GUI """
-    with dpg.tab_bar():
-        with dpg.tab(label="ETHScan"):
-            pass
-        
 
 
 def add_menu_bar():
