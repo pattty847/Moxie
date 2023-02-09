@@ -8,7 +8,7 @@ import datetime as dt
 # TODO: Add documentation for all these functions.
 
 # TODO: Fix this function
-def search_eth_address(transactions, parent):
+def add_transactions(transactions, parent):
     """_summary_
 
     Args:
@@ -25,10 +25,11 @@ def search_eth_address(transactions, parent):
                 dpg.add_text(f"Timestamp: {dt.datetime.fromtimestamp(int(transaction['timeStamp']))}") # convert to datetime
                 dpg.add_text(f"Block: {transaction['blockNumber']}")
                 dpg.add_text(f"Value: {util.wei_to_eth(transaction['value'])}")
-            dpg.add_button(label=f"From: {transaction['from']}")
+            dpg.add_button(label=f"From: {transaction['from']}", enabled=False)
             # TODO: Add callback, to search this address. It should remove children from "parent" param, and fill it with the transactions in "transactions["to"]"
             dpg.add_button(label=f"To: {transaction['to']}")
     
+    # For every transaction push a child window containing its information
     for transaction in transactions:
         add_transaction(transaction)
 

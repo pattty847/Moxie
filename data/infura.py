@@ -1,5 +1,7 @@
 import requests
 
+""" File under construction. Not being used elsewhere atm. """
+
 def get_current_block(next_block = False):
     """ Infura request to get the latest ethereum block number.
 

@@ -46,7 +46,7 @@ def get_wallet_transactions(address, save_to_file: bool, parent: str):
                 return
         
         if parent:
-            components.search_eth_address(transactions, parent)
+            components.add_transactions(transactions, parent)
             return
 
         return transactions
